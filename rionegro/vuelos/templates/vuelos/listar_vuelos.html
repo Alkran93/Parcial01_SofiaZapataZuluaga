@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de Vuelos</title>
+</head>
+<body>
+    <h1>Vuelos registrados</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+        </tr>
+        {% for vuelo in vuelos %}
+        <tr>
+            <td>{{ vuelo.id }}</td>
+            {% if vuelo.tipo == 'Internacional' %}
+            <td style="font-weight:bold;">
+                {{ vuelo.name }}
+            </td>
+            {% else %}
+            <td style="font-weight:normal;">
+                {{ vuelo.name }}
+            </td>
+            {% endif %}
+            <td>{{ vuelo.tipo }}</td>
+            <!-- Aquí cambiamos el color a azul si es Nacional y verde si es Internacional -->
+            {% if vuelo.tipo == 'Nacional' %}
+            <td style="color: blue;">
+                {{ vuelo.price }}
+            </td>
+            {% else %}
+            <td style="color: green;">
+                {{ vuelo.price }}
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
